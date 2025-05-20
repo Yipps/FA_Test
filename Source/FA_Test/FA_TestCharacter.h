@@ -45,8 +45,12 @@ class AFA_TestCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 	
+
 public:
 	AFA_TestCharacter();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category= "Input")
+	bool bMenuActive;
 
 protected:
 	/** Called for movement input */
@@ -54,6 +58,8 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+
 
 protected:
 	// APawn interface
