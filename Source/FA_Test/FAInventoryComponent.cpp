@@ -13,6 +13,17 @@ UFAInventoryComponent::UFAInventoryComponent()
 	Items.SetNum(MaxItems);
 }
 
+UFAInventoryComponent* UFAInventoryComponent::GetInventoryComponent(AActor* Actor)
+{
+	if (!Actor)
+		return nullptr;
+	
+	if (UFAInventoryComponent* Inventory = Actor->FindComponentByClass<UFAInventoryComponent>())
+		return Inventory;
+	
+	return nullptr;
+}
+
 void UFAInventoryComponent::AddItem(UInventoryDataAsset* ItemToAdd)
 {
 	if (!CanAddItem())
@@ -65,7 +76,12 @@ bool UFAInventoryComponent::SwapItems(UInventoryDataAsset* Item, int NewPosition
 
 bool UFAInventoryComponent::CanAddItem()
 {
-	return Items.Num() < MaxItems;
+	for (int i = 0; i < Items.Num(); i++)
+	{
+		if (Items[i] == nullptr)
+			return true;
+	}
+	return false;
 }
 
 int UFAInventoryComponent::FindItemIndex(UInventoryDataAsset* Item)

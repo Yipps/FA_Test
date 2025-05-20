@@ -15,7 +15,10 @@ class FA_TEST_API UFAInventoryComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
+
+	static UFAInventoryComponent* GetInventoryComponent(AActor* Actor);
+	
 	// Sets default values for this component's properties
 	UFAInventoryComponent();
 
