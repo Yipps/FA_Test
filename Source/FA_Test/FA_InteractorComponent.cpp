@@ -36,7 +36,7 @@ void UFA_InteractorComponent::TraceInteract()
 			{
 				if (AActor* HitActor = HitResult.GetActor())
 				{
-					if (IFA_IInteractable* Interactable = Cast<IFA_IInteractable>(HitActor))
+					if (HitActor->Implements<UFA_IInteractable>())
 					{
 						IFA_IInteractable::Execute_Interact(HitActor, Pawn);
 					}

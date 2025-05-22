@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "FAInventoryComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FInventoryChangeDelegate, UInventoryDataAsset*, item, int, index, bool, bNewItemAdded);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FInventoryChangeDelegate, UInventoryDataAsset*, item, int, index, int, bOperation);
 
 class UInventoryDataAsset;
 

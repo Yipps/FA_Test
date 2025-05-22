@@ -127,7 +127,7 @@ void AFAPhotoRoom::ZoomMesh(float ZoomAmount)
 void AFAPhotoRoom::UpdateZoom()
 {
 	//TODO Find a better way to determine a min and max zoom. Likely some bounds or camera functions that can be used
-	float Distance = FMath::Lerp(MeshRadius, MeshRadius * 2, CurrentZoom);
+	float Distance = FMath::Lerp(MeshRadius + 10, MeshRadius * 2, CurrentZoom);
 
 	//Keep the mesh centered on the camera
 	FVector Direction = SceneCapture->GetForwardVector();

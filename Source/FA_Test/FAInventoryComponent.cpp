@@ -34,7 +34,7 @@ void UFAInventoryComponent::AddItem(UInventoryDataAsset* ItemToAdd)
 		if (Items[i] == nullptr)
 		{
 			Items[i] = ItemToAdd;
-			OnInventoryChange.Broadcast(ItemToAdd, i, true);
+			OnInventoryChange.Broadcast(ItemToAdd, i, 1);
 			return;
 		}
 	}
@@ -49,7 +49,7 @@ void UFAInventoryComponent::RemoveItem(UInventoryDataAsset* ItemToRemove)
 		if (Items[i] == ItemToRemove)
 		{
 			Items[i] = nullptr;
-			OnInventoryChange.Broadcast(ItemToRemove, i, false);
+			OnInventoryChange.Broadcast(ItemToRemove, i, -1);
 			return;
 		}
 	}
@@ -67,8 +67,8 @@ bool UFAInventoryComponent::SwapItems(UInventoryDataAsset* Item, int NewPosition
 	Items[OldIndex] = TempItem;
 	Items[NewPosition] = Item;
 
-	OnInventoryChange.Broadcast(Item, NewPosition, false);
-	OnInventoryChange.Broadcast(TempItem, OldIndex, false);
+	OnInventoryChange.Broadcast(Item, NewPosition, 0);
+	OnInventoryChange.Broadcast(TempItem, OldIndex, 0);
 	return true;
 
 
